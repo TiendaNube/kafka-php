@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Sasl;
@@ -6,6 +7,7 @@ namespace Kafka\Sasl;
 use Kafka\CommonSocket;
 use Kafka\Exception;
 use Kafka\Protocol\Protocol as ProtocolTool;
+
 use function base64_decode;
 use function base64_encode;
 use function chr;

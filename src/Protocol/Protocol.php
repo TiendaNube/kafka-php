@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Protocol;
@@ -7,6 +8,7 @@ use Kafka\Exception\NotSupported;
 use Kafka\Exception\Protocol as ProtocolException;
 use Kafka\LoggerTrait;
 use Psr\Log\LoggerAwareTrait;
+
 use function array_map;
 use function array_shift;
 use function array_values;
@@ -199,7 +201,7 @@ abstract class Protocol
         $left  = 0xffffffff00000000;
         $right = 0x00000000ffffffff;
 
-        $l = ($data & $left) >> 32;
+        $l = ($data & (int)$left) >> 32;
         $r = $data & $right;
 
         return pack($type, $l, $r);

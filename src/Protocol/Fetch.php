@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Protocol;
@@ -6,6 +7,7 @@ namespace Kafka\Protocol;
 use Kafka\Exception;
 use Kafka\Exception\NotSupported;
 use Kafka\Exception\Protocol as ProtocolException;
+
 use function array_merge;
 use function strlen;
 use function substr;

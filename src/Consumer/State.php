@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Consumer;
@@ -6,6 +7,7 @@ namespace Kafka\Consumer;
 use Amp\Loop;
 use Kafka\ConsumerConfig;
 use Kafka\SingletonTrait;
+
 use function array_keys;
 use function microtime;
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Base\Sasl;
@@ -8,6 +9,7 @@ use Kafka\Socket;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\TestCase;
+
 use function chmod;
 use function hex2bin;
 
@@ -82,7 +84,7 @@ class GssapiTest extends TestCase
         $socket->method('readBlocking')
             ->will($this->onConsecutiveCalls(
                 // hand shake response data length
-                    hex2bin('00000037'),
+                hex2bin('00000037'),
                 $handShakeData,
                 $stokenLength,
                 $stokenData

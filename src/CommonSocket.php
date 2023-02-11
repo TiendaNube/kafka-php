@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka;
 
 use const STREAM_CLIENT_CONNECT;
+
 use function feof;
 use function fread;
 use function fwrite;

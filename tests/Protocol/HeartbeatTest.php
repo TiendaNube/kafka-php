@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Protocol;
 
 use Kafka\Protocol\Heartbeat;
 use PHPUnit\Framework\TestCase;
+
 use function bin2hex;
 use function hex2bin;
 use function json_encode;

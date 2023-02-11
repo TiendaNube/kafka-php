@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka;
@@ -6,6 +7,7 @@ namespace Kafka;
 use Kafka\Sasl\Gssapi;
 use Kafka\Sasl\Plain;
 use Kafka\Sasl\Scram;
+
 use function array_keys;
 use function explode;
 use function in_array;

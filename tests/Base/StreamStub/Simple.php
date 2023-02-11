@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Base\StreamStub;
 
 use PHPUnit\Framework\MockObject\MockObject;
+
 use function stream_context_get_options;
 
 class Simple

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Consumer;
@@ -10,6 +11,7 @@ use Kafka\LoggerTrait;
 use Kafka\Protocol;
 use Kafka\Protocol\Protocol as ProtocolTool;
 use Psr\Log\LoggerAwareTrait;
+
 use function count;
 use function end;
 use function explode;

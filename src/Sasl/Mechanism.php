@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Sasl;
@@ -8,6 +9,7 @@ use Kafka\Exception;
 use Kafka\Protocol;
 use Kafka\Protocol\Protocol as ProtocolTool;
 use Kafka\SaslMechanism;
+
 use function substr;
 
 abstract class Mechanism implements SaslMechanism

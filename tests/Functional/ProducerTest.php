@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Functional;
@@ -9,7 +10,9 @@ use Kafka\ConsumerConfig;
 use Kafka\ProducerConfig;
 use Kafka\Protocol\Protocol;
 use PHPUnit\Framework\TestCase;
+
 use const STR_PAD_LEFT;
+
 use function getenv;
 use function str_pad;
 use function version_compare;

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Protocol;
@@ -7,6 +8,7 @@ use Kafka\Exception\NotSupported;
 use Kafka\Exception\Protocol as ProtocolException;
 use Lcobucci\Clock\Clock;
 use Lcobucci\Clock\SystemClock;
+
 use function crc32;
 use function is_array;
 use function substr;
@@ -37,7 +39,7 @@ class Produce extends Protocol
     {
         parent::__construct($version);
 
-        $this->clock = $clock ?: new SystemClock();
+        $this->clock = $clock ?: SystemClock::fromSystemTimezone();
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Base;
@@ -12,6 +13,7 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+
 use function array_merge;
 use function fopen;
 use function in_array;
