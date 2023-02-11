@@ -21,11 +21,13 @@
             <directory suffix=".php">tests/Functional</directory>
         </testsuite>
     </testsuites>
+
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
         </include>
     </coverage>
+    
     <php>
         <env name="IS_RUNNING_PHPUNIT" value="true"/>
         <env name="KAFKA_VERSION" value="0.9.1"/>
