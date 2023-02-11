@@ -1,0 +1,74 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: phpdockerio/php:8.2-cli
+        environment:
+          APP_ENV: test
+          KAFKA_VERSION: 1.0.0
+          KAFKA_BROKERS: kafka-1.0.0:9092
+          KAFKA_TOPIC: test
+          KAFKA_COMPRESS: 1
+    steps:
+      - run:
+          name: Install system packages
+          command: |
+            pecl install -f krb5-1.1.2
+            mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
+      - checkout
+      - run:
+          name: Install project dependencies
+          command: |
+            composer install --no-interaction
+            mkdir -p build/logs
+            mkdir -p build/coverage
+      - run:
+          name: Run CS tests
+          command: vendor/bin/phpcs --standard=PSR12 src tests
+      - run:
+          name: Run Unit tests
+          command: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+      - run:
+          name: Functional tests
+          command: |
+            docker-compose up -d kafka-0.9.0.1
+            sleep 10
+            docker-compose exec kafka-0.9.0.1 /opt/kafka_2.11-0.9.0.1/bin/kafka-topics.sh --zookeeper zookeeper:2181 --create --partitions 3 --replication-factor 1 --topic test
+            docker-compose run -e KAFKA_BROKERS=kafka-0.9.0.1:9092 -e KAFKA_VERSION -e KAFKA_TOPIC=test test-runner
+            vendor/bin/phpunit
+            docker-compose down
+      - run:
+          name: Functional tests
+          command: |
+            apt-get install docker-ce
+            docker-compose up -d kafka-0.10.2.1
+            sleep 10
+            docker-compose exec kafka-0.10.2.1 /opt/kafka_2.11/bin/kafka-topics.sh --zookeeper zookeeper:2181 --create --partitions 3 --replication-factor 1 --topic test
+            docker-compose run -e KAFKA_BROKERS=kafka-0.10.2.1:9092 -e KAFKA_VERSION -e KAFKA_TOPIC=test test-runner
+            vendor/bin/phpunit
+            docker-compose down
+      - run:
+          name: Functional tests
+          command: |
+            apt-get install docker-ce
+            docker-compose up -d kafka-0.11.0.1
+            sleep 10
+            docker-compose exec kafka-0.11.0.1 /opt/kafka_2.11/bin/kafka-topics.sh --zookeeper zookeeper:2181 --create --partitions 3 --replication-factor 1 --topic test
+            docker-compose run -e KAFKA_BROKERS=kafka-0.11.0.1:9092 -e KAFKA_VERSION -e KAFKA_TOPIC=test test-runner
+            vendor/bin/phpunit
+            docker-compose down
+      - run:
+          name: Functional tests
+          command: |
+            apt-get install docker-ce
+            docker-compose up -d kafka-1.0.0
+            sleep 10
+            docker-compose exec kafka-1.0.0 /opt/kafka_2.11/bin/kafka-topics.sh --zookeeper zookeeper:2181 --create --partitions 3 --replication-factor 1 --topic test
+            docker-compose run -e KAFKA_BROKERS=kafka-1.0.0:9092 -e KAFKA_VERSION -e KAFKA_TOPIC=test test-runner
+            vendor/bin/phpunit
+            docker-compose down
+
+workflows:
+  test:
+    jobs:
+      - test
