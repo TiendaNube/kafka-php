@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Producer;
@@ -6,6 +7,7 @@ namespace Kafka\Producer;
 use Amp\Loop;
 use Kafka\ProducerConfig;
 use Kafka\SingletonTrait;
+
 use function array_keys;
 use function is_array;
 use function microtime;
@@ -73,8 +75,10 @@ class State
         }
 
         // start sync metadata
-        if (isset($request, $this->requests[self::REQUEST_METADATA]['func'])
-            && $this->callStatus[self::REQUEST_METADATA]['status'] === self::STATUS_LOOP) {
+        if (
+            isset($request, $this->requests[self::REQUEST_METADATA]['func'])
+            && $this->callStatus[self::REQUEST_METADATA]['status'] === self::STATUS_LOOP
+        ) {
             $context = $this->requests[self::REQUEST_METADATA]['func']();
             $this->processing($request, $context);
         }
@@ -156,7 +160,7 @@ class State
         $this->callStatus = [
             self::REQUEST_METADATA => $this->callStatus[self::REQUEST_METADATA],
             self::REQUEST_PRODUCE => [
-                'status'=> self::STATUS_LOOP,
+                'status' => self::STATUS_LOOP,
             ],
         ];
     }

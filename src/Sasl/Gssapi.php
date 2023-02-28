@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Sasl;
@@ -8,7 +9,9 @@ use Kafka\CommonSocket;
 use Kafka\Exception;
 use Kafka\Protocol\Protocol as ProtocolTool;
 use KRB5CCache;
+
 use const GSS_C_INITIATE;
+
 use function extension_loaded;
 use function file_exists;
 use function is_file;

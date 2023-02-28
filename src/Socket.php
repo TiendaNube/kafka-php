@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka;
 
 use Amp\Loop;
 use Kafka\Protocol\Protocol;
+
 use function fclose;
 use function feof;
 use function fread;

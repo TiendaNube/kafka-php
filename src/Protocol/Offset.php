@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Protocol;
 
 use Kafka\Exception\Protocol as ProtocolException;
+
 use function substr;
 
 class Offset extends Protocol

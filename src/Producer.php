@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka;
@@ -7,6 +8,7 @@ use Amp\Loop;
 use Kafka\Producer\Process;
 use Kafka\Producer\SyncProcess;
 use Psr\Log\LoggerAwareTrait;
+
 use function is_array;
 
 class Producer

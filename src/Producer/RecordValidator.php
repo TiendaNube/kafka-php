@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Kafka\Producer;
 
 use Kafka\Exception;
+
 use function is_string;
 use function trim;
 

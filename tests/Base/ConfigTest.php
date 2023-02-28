@@ -1,10 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Base;
 
 use Kafka\Config;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
 final class ConfigTest extends TestCase

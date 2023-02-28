@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Functional\Ticket;
@@ -7,6 +8,7 @@ use Kafka\Exception\InvalidRecordInSet;
 use Kafka\Producer;
 use Kafka\ProducerConfig;
 use PHPUnit\Framework\TestCase;
+
 use function getenv;
 
 final class GH181Test extends TestCase

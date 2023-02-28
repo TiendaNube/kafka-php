@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-     backupGlobals="false"
-     colors="true"
-     verbose="true"
-     beStrictAboutOutputDuringTests="true"
-     beStrictAboutTestsThatDoNotTestAnything="true"
-     beStrictAboutTodoAnnotatedTests="true"
-     beStrictAboutChangesToGlobalState="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         backupGlobals="false"
+         colors="true"
+         verbose="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         beStrictAboutChangesToGlobalState="true"
 >
     <testsuites>
         <testsuite name="base">
@@ -21,9 +22,16 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <coverage processUncoveredFiles="true">
+        <include>
             <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </coverage>
+    
+    <php>
+        <env name="IS_RUNNING_PHPUNIT" value="true"/>
+        <env name="KAFKA_VERSION" value="0.9.1"/>
+        <env name="KAFKA_BROKERS" value="kafka-0.9.1:9092"/>
+        <env name="KAFKA_TOPIC" value="test"/>
+    </php>
 </phpunit>

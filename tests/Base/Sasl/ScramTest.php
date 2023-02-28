@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Base\Sasl;
@@ -6,6 +7,7 @@ namespace KafkaTest\Base\Sasl;
 use Kafka\Sasl\Scram;
 use Kafka\Socket;
 use PHPUnit\Framework\TestCase;
+
 use function hex2bin;
 
 class ScramTest extends TestCase

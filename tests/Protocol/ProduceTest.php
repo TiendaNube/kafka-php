@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace KafkaTest\Protocol;
@@ -6,6 +7,7 @@ namespace KafkaTest\Protocol;
 use Kafka\Protocol\Produce;
 use Lcobucci\Clock\FrozenClock;
 use PHPUnit\Framework\TestCase;
+
 use function bin2hex;
 use function hex2bin;
 use function json_encode;
